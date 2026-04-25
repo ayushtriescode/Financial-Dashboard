@@ -1,0 +1,108 @@
+:root {
+  --bg-color: #f1f5f9;
+  --card-bg: #ffffff;
+  --primary: #2563eb;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --radius: 12px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav {
+  width: 100%;
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.main-container {
+  width: 90%;
+  max-width: 600px; 
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Card Styling */
+form, .filter-box, .total-card {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
+}
+
+.input-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+input, select {
+  padding: 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+button {
+  width: 100%;
+  padding: 0.8rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.filter-box {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* List Styling */
+ul {
+  padding: 0;
+  margin-top: 1rem;
+}
+
+li {
+  background: white;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 5px solid var(--primary);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Responsive centering for the Total */
+.total-card {
+  text-align: center;
+  background: var(--primary);
+  color: white;
+}
