@@ -1,60 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Financial Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <nav>
-        <h1>Financial Dashboard</h1>
+      <h1>Financial Dashboard</h1>
     </nav>
 
     <div class="main-container">
-        <div class="input-section">
-            <form id="expense-form">
-                <h2>Add Expense</h2>
-                <div class="input-group">
-                    <label>Name</label>
-                    <input type="text" id="name" placeholder="e.g. Pizza">
-                </div>
-                <div class="input-group">
-                    <label>Amount</label>
-                    <input type="number" id="amt" placeholder="0.00">
-                </div>
-                <div class="input-group">
-                    <label>Category</label>
-                    <select id="category">
-                        <option value="Housing">Housing</option>
-                        <option value="Food">Food</option>
-                        <option value="Transportation">Transportation</option>
-                        <option value="Entertainment">Entertainment</option>
-                    </select>
-                </div>
-                <button id="submit">Add to List</button>
-            </form>
+      <div class="input-section">
+        <form id="expense-form">
+          <h2>Add Expense</h2>
+          <div class="input-group">
+            <label>Date</label>
+            <input type="date" id="expense-date" />
+          </div>
+          <div class="input-group">
+            <label>Name</label>
+            <input type="text" id="name" placeholder="e.g. Pizza" />
+          </div>
+          <div class="input-group">
+            <label>Amount</label>
+            <input type="number" id="amt" placeholder="0.00" />
+          </div>
+          <div class="input-group">
+            <label>Category</label>
+            <select id="category">
+              <option value="Housing">Housing</option>
+              <option value="Food">Food</option>
+              <option value="Transportation">Transportation</option>
+              <option value="Entertainment">Entertainment</option>
+            </select>
+          </div>
+          <button id="submit">Add to List</button>
+        </form>
 
-            <div class="filter-box">
-                <label>Filter by Category:</label>
-                <select id="filter-category">
-                    <option value="All">All Categories</option>
-                    <option value="Housing">Housing</option>
-                    <option value="Food">Food</option>
-                    <option value="Transportation">Transportation</option>
-                    <option value="Entertainment">Entertainment</option>
-                </select>
-            </div>
+        <div class="filter-box">
+          <label>Filter by Category:</label>
+          <select id="filter-category">
+            <option value="All">All Categories</option>
+            <option value="Housing">Housing</option>
+            <option value="Food">Food</option>
+            <option value="Transportation">Transportation</option>
+            <option value="Entertainment">Entertainment</option>
+          </select>
         </div>
+      </div>
 
-        <div class="display-section">
-            <div class="total-card">
-                <h3 id="total-display">Total Expense: $0</h3>
-            </div>
-            <ul id="expense-list"></ul>
+      <div class="display-section">
+        <div class="total-card">
+          <h3 id="total-display">Total Expense: $0</h3>
         </div>
+        <ul id="expense-list"></ul>
+      </div>
     </div>
 
     <script type="module" src="app.js"></script>
-</body>
+  </body>
 </html>

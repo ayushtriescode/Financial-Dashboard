@@ -6,46 +6,64 @@ const amountInput = document.getElementById("amt");
 const categoryInput = document.getElementById("category");
 const list = document.getElementById("expense-list");
 const submitInput = document.getElementById("submit");
-const filterCategory = document.getElementById("filter-category")
+const filterCategory = document.getElementById("filter-category");
+const dateInput = document.getElementById("expense-date");
 
-submitInput.addEventListener("click", (e) =>{
-    e.preventDefault();
+submitInput.addEventListener("click", (e) => {
+  e.preventDefault();
 
-    const newEntry = {
-        id: Date.now(),
-        name: nameInput.value,
-        amount: Number(amountInput.value),
-        category: categoryInput.value
-    }
+  const newEntry = {
+    id: Date.now(),
+    name: nameInput.value,
+    amount: Number(amountInput.value),
+    category: categoryInput.value,
+    date: dateInput.value || new Date().toISOString().split("T")[0], // Default to today
+  };
 
-    addExpense(newEntry);
-    console.log("New Total:", calculateTotal(expenses));
+  addExpense(newEntry);
+  console.log("New Total:", calculateTotal(expenses));
 
-    nameInput.value = "";
-    amountInput.value = "";
-    categoryInput.value = "";
+  nameInput.value = "";
+  amountInput.value = "";
+  categoryInput.value = "";
 
-    render();
-})
+  render();
+});
 
-function render(dataToDisplay = expenses){
-    const expenseList = dataToDisplay.map(item =>{
-        return `<li>${item.name}: ${item.amount} [${item.category}]</li>`
+function render(dataToDisplay = expenses) {
+  // 1. Sort data so the newest dates are at the top
+  const sortedData = [...dataToDisplay].sort(
+    (a, b) => new Date(b.date) - new Date(a.date),
+  );
+
+  // 2. Map through the sorted data
+  list.innerHTML = sortedData
+    .map((item) => {
+      return `
+            <li class="expense-item">
+                <div class="item-info">
+                    <strong>${item.name}</strong>
+                    <small>${item.date}</small>
+                </div>
+                <div class="item-amount">
+                    $${item.amount} <span class="badge">${item.category}</span>
+                </div>
+            </li>
+        `;
     })
+    .join("");
 
-    list.innerHTML = expenseList.join("");
-    const totalDisplay = document.getElementById("total-display");
-    totalDisplay.innerText = `Total Expense: $${calculateTotal(dataToDisplay)}`;
+  const totalDisplay = document.getElementById("total-display");
+  totalDisplay.innerText = `Total Expense: $${calculateTotal(dataToDisplay)}`;
 }
 
-filterCategory.addEventListener("change", (e) =>{
-    const selected = e.target.value;
+filterCategory.addEventListener("change", (e) => {
+  const selected = e.target.value;
 
-    if(selected === "All"){
-        render(expenses);
-    }
-    else{
-        const filtered = expenses.filter(item => item.category === selected);
-        render(filtered);
-    }
+  if (selected === "All") {
+    render(expenses);
+  } else {
+    const filtered = expenses.filter((item) => item.category === selected);
+    render(filtered);
+  }
 });
