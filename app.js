@@ -1,4 +1,4 @@
-import { expenses, addExpense } from "./data.js";
+import { expenses, addExpense, saveToLocalStorage } from "./data.js";
 import { calculateTotal } from "./utils.js";
 
 const nameInput = document.getElementById("name");
@@ -21,6 +21,7 @@ submitInput.addEventListener("click", (e) => {
   };
 
   addExpense(newEntry);
+  saveToLocalStorage();
   console.log("New Total:", calculateTotal(expenses));
 
   nameInput.value = "";
@@ -67,3 +68,4 @@ filterCategory.addEventListener("change", (e) => {
     render(filtered);
   }
 });
+render();
